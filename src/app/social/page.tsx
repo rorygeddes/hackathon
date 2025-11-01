@@ -46,8 +46,8 @@ export default function SocialPage() {
     <div className="max-w-4xl mx-auto px-6 py-8">
       <header className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-3xl font-semibold text-gray-900">Social</h1>
-          <button className="px-4 py-2 rounded-xl bg-black text-white hover:bg-gray-800 transition-colors text-sm font-medium">
+          <h1 className="text-3xl font-semibold text-apple-gray-darker">Social</h1>
+          <button className="px-4 py-2 rounded-2xl bg-apple-blue text-white hover:bg-apple-blue-dark transition-all duration-200 text-sm font-medium shadow-apple">
             + Add Friend
           </button>
         </div>
@@ -55,13 +55,13 @@ export default function SocialPage() {
 
       {/* Tabs */}
       <div className="mb-6">
-        <div className="flex gap-4 border-b border-gray-200">
+        <div className="flex gap-4 border-b border-apple-gray">
           <button
             onClick={() => setActiveTab("friends")}
             className={`pb-3 px-1 font-medium transition-colors ${
               activeTab === "friends"
-                ? "text-black border-b-2 border-black"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-apple-blue border-b-2 border-apple-blue"
+                : "text-apple-gray-dark hover:text-apple-blue"
             }`}
           >
             Friends ({friends.length})
@@ -70,8 +70,8 @@ export default function SocialPage() {
             onClick={() => setActiveTab("groups")}
             className={`pb-3 px-1 font-medium transition-colors ${
               activeTab === "groups"
-                ? "text-black border-b-2 border-black"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-apple-blue border-b-2 border-apple-blue"
+                : "text-apple-gray-dark hover:text-apple-blue"
             }`}
           >
             Groups ({groups.length})
@@ -80,8 +80,8 @@ export default function SocialPage() {
             onClick={() => setActiveTab("requests")}
             className={`pb-3 px-1 font-medium transition-colors ${
               activeTab === "requests"
-                ? "text-black border-b-2 border-black"
-                : "text-gray-600 hover:text-gray-900"
+                ? "text-apple-blue border-b-2 border-apple-blue"
+                : "text-apple-gray-dark hover:text-apple-blue"
             }`}
           >
             Requests ({requests.length})
@@ -94,32 +94,32 @@ export default function SocialPage() {
         <div className="space-y-4">
           {acceptedFriends.length > 0 && (
             <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-3">Accepted</h3>
+              <h3 className="text-sm font-medium text-apple-gray-dark mb-3">Accepted</h3>
               <div className="space-y-3">
                 {acceptedFriends.map((friend) => (
                   <div
                     key={friend.id}
-                    className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
+                    className="bg-white rounded-3xl shadow-apple border border-apple-gray/30 p-6"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                          <span className="text-lg">
+                        <div className="w-12 h-12 rounded-full bg-apple-blue-subtle flex items-center justify-center">
+                          <span className="text-lg text-apple-blue">
                             {friend.name.charAt(0).toUpperCase()}
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-lg font-semibold text-gray-900">{friend.name}</h4>
-                          <p className="text-sm text-gray-600">{friend.email}</p>
+                          <h4 className="text-lg font-semibold text-apple-gray-darker">{friend.name}</h4>
+                          <p className="text-sm text-apple-gray-dark">{friend.email}</p>
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <button className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-sm font-medium text-gray-700 transition-colors">
+                        <button className="px-4 py-2 rounded-2xl bg-apple-gray-light hover:bg-apple-gray text-sm font-medium text-apple-gray-darker transition-all duration-200 shadow-apple">
                           DM (future)
                         </button>
                         <Link
                           href={`/split/people/${friend.id}`}
-                          className="px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-sm font-medium text-blue-700 transition-colors"
+                          className="px-4 py-2 rounded-2xl bg-apple-blue-subtle hover:bg-apple-blue-subtle/80 text-sm font-medium text-apple-blue transition-all duration-200 shadow-apple"
                         >
                           View Split
                         </Link>
@@ -133,26 +133,26 @@ export default function SocialPage() {
 
           {pendingFriends.length > 0 && (
             <div>
-              <h3 className="text-sm font-medium text-gray-600 mb-3">Pending</h3>
+              <h3 className="text-sm font-medium text-apple-gray-dark mb-3">Pending</h3>
               <div className="space-y-3">
                 {pendingFriends.map((friend) => (
                   <div
                     key={friend.id}
-                    className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
+                    className="bg-white rounded-3xl shadow-apple border border-apple-gray/30 p-6"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                          <span className="text-lg">
+                        <div className="w-12 h-12 rounded-full bg-apple-blue-subtle flex items-center justify-center">
+                          <span className="text-lg text-apple-blue">
                             {friend.name.charAt(0).toUpperCase()}
                           </span>
                         </div>
                         <div>
-                          <h4 className="text-lg font-semibold text-gray-900">{friend.name}</h4>
-                          <p className="text-sm text-gray-600">{friend.email}</p>
+                          <h4 className="text-lg font-semibold text-apple-gray-darker">{friend.name}</h4>
+                          <p className="text-sm text-apple-gray-dark">{friend.email}</p>
                         </div>
                       </div>
-                      <span className="text-sm text-gray-500">Waiting for acceptance</span>
+                      <span className="text-sm text-apple-gray-dark">Waiting for acceptance</span>
                     </div>
                   </div>
                 ))}
@@ -161,9 +161,9 @@ export default function SocialPage() {
           )}
 
           {friends.length === 0 && (
-            <div className="text-center py-12 bg-white rounded-2xl border border-gray-200">
-              <p className="text-gray-500 mb-4">No friends yet</p>
-              <button className="px-4 py-2 rounded-xl bg-black text-white hover:bg-gray-800 transition-colors text-sm font-medium">
+            <div className="text-center py-12 bg-white rounded-3xl border border-apple-gray/30 shadow-apple">
+              <p className="text-apple-gray-dark mb-4">No friends yet</p>
+              <button className="px-4 py-2 rounded-2xl bg-apple-blue text-white hover:bg-apple-blue-dark transition-all duration-200 text-sm font-medium shadow-apple">
                 Add Friend
               </button>
             </div>
@@ -175,9 +175,9 @@ export default function SocialPage() {
       {activeTab === "groups" && (
         <div className="space-y-4">
           {groups.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-2xl border border-gray-200">
-              <p className="text-gray-500 mb-4">No groups yet</p>
-              <button className="px-4 py-2 rounded-xl bg-black text-white hover:bg-gray-800 transition-colors text-sm font-medium">
+            <div className="text-center py-12 bg-white rounded-3xl border border-apple-gray/30 shadow-apple">
+              <p className="text-apple-gray-dark mb-4">No groups yet</p>
+              <button className="px-4 py-2 rounded-2xl bg-apple-blue text-white hover:bg-apple-blue-dark transition-all duration-200 text-sm font-medium shadow-apple">
                 Create Group
               </button>
             </div>
@@ -185,16 +185,16 @@ export default function SocialPage() {
             groups.map((group) => (
               <div
                 key={group.id}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
+                className="bg-white rounded-3xl shadow-apple border border-apple-gray/30 p-6"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900">{group.name}</h4>
-                    <p className="text-sm text-gray-600">{group.members} members</p>
+                    <h4 className="text-lg font-semibold text-apple-gray-darker">{group.name}</h4>
+                    <p className="text-sm text-apple-gray-dark">{group.members} members</p>
                   </div>
                   <Link
                     href={`/split/groups/${group.id}`}
-                    className="px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-sm font-medium text-blue-700 transition-colors"
+                    className="px-4 py-2 rounded-2xl bg-apple-blue-subtle hover:bg-apple-blue-subtle/80 text-sm font-medium text-apple-blue transition-all duration-200 shadow-apple"
                   >
                     View Group
                   </Link>
@@ -209,28 +209,28 @@ export default function SocialPage() {
       {activeTab === "requests" && (
         <div className="space-y-4">
           {requests.length === 0 ? (
-            <div className="text-center py-12 bg-white rounded-2xl border border-gray-200">
-              <p className="text-gray-500">No pending requests</p>
+            <div className="text-center py-12 bg-white rounded-3xl border border-apple-gray/30 shadow-apple">
+              <p className="text-apple-gray-dark">No pending requests</p>
             </div>
           ) : (
             requests.map((request) => (
               <div
                 key={request.id}
-                className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6"
+                className="bg-white rounded-3xl shadow-apple border border-apple-gray/30 p-6"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                      <span className="text-lg">
+                    <div className="w-12 h-12 rounded-full bg-apple-blue-subtle flex items-center justify-center">
+                      <span className="text-lg text-apple-blue">
                         {request.from.name.charAt(0).toUpperCase()}
                       </span>
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900">
+                      <h4 className="text-lg font-semibold text-apple-gray-darker">
                         {request.from.name}
                       </h4>
-                      <p className="text-sm text-gray-600">{request.from.email}</p>
-                      <p className="text-xs text-gray-500 mt-1">
+                      <p className="text-sm text-apple-gray-dark">{request.from.email}</p>
+                      <p className="text-xs text-apple-gray-dark mt-1">
                         {request.timestamp.toLocaleDateString()}
                       </p>
                     </div>
@@ -238,13 +238,13 @@ export default function SocialPage() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleAcceptRequest(request.id)}
-                      className="px-4 py-2 rounded-xl bg-black text-white hover:bg-gray-800 transition-colors text-sm font-medium"
+                      className="px-4 py-2 rounded-2xl bg-apple-blue text-white hover:bg-apple-blue-dark transition-all duration-200 text-sm font-medium shadow-apple"
                     >
                       Accept
                     </button>
                     <button
                       onClick={() => handleDeclineRequest(request.id)}
-                      className="px-4 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-medium text-gray-700"
+                      className="px-4 py-2 rounded-2xl bg-apple-gray-light hover:bg-apple-gray transition-all duration-200 text-sm font-medium text-apple-gray-darker shadow-apple"
                     >
                       Decline
                     </button>

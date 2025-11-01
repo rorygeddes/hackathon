@@ -8,11 +8,11 @@ interface BudgetSnapshotProps {
 
 export default function BudgetSnapshot({ categories }: BudgetSnapshotProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Budget Snapshot</h3>
-      <div className="space-y-3">
+    <div className="bg-white rounded-3xl shadow-apple border border-apple-gray/30 p-6">
+      <h3 className="text-lg font-semibold text-apple-gray-darker mb-4">Budget Snapshot</h3>
+      <div className="space-y-4">
         {categories.length === 0 ? (
-          <div className="text-center py-4 text-gray-500 text-sm">
+          <div className="text-center py-4 text-apple-gray-dark text-sm">
             No budget categories yet
           </div>
         ) : (
@@ -22,16 +22,16 @@ export default function BudgetSnapshot({ categories }: BudgetSnapshotProps) {
               : 0;
             const isOver = category.actual > category.allowance;
             return (
-              <div key={index} className="pb-3 border-b border-gray-100 last:border-0">
+              <div key={index} className="pb-3 border-b border-apple-gray last:border-0">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-900">{category.name}</span>
-                  <span className={`text-xs font-semibold ${isOver ? 'text-red-600' : 'text-gray-600'}`}>
+                  <span className="text-sm font-medium text-apple-gray-darker">{category.name}</span>
+                  <span className={`text-xs font-semibold ${isOver ? 'text-red-600' : 'text-apple-gray-dark'}`}>
                     ${category.actual.toLocaleString()} / ${category.allowance.toLocaleString()}
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-1.5 overflow-hidden">
+                <div className="w-full bg-apple-gray rounded-full h-2 overflow-hidden">
                   <div
-                    className={`h-full transition-all duration-300 ${isOver ? 'bg-red-500' : 'bg-blue-600'}`}
+                    className={`h-full transition-all duration-300 rounded-full ${isOver ? 'bg-red-500' : 'bg-apple-blue'}`}
                     style={{ width: `${Math.min(percentage, 100)}%` }}
                   />
                 </div>

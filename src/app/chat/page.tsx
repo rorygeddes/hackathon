@@ -11,7 +11,7 @@ export default function ChatPage() {
     {
       id: "1",
       role: "assistant",
-      content: "Hi! I'm Luni AI. I can help you with your finances. Ask me anything!",
+      content: "Hi! I'm AI. I can help you with your finances. Ask me anything!",
       timestamp: new Date(),
     },
   ]);
@@ -36,76 +36,74 @@ export default function ChatPage() {
     };
 
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input;
     setInput("");
 
     // Auto-switch to Agent mode if question needs data access
-    const needsAgent = input.toLowerCase().includes("spend") ||
-      input.toLowerCase().includes("balance") ||
-      input.toLowerCase().includes("transaction") ||
-      input.toLowerCase().includes("goal");
+    const needsAgent = currentInput.toLowerCase().includes("spend") ||
+      currentInput.toLowerCase().includes("balance") ||
+      currentInput.toLowerCase().includes("transaction") ||
+      currentInput.toLowerCase().includes("goal");
 
     if (needsAgent && mode === "chat") {
       setMode("agent");
     }
 
-    // Simulate action bubbles in Agent mode
-    if (mode === "agent" || needsAgent) {
-      const actions: ActionBubble[] = [
-        { id: "1", tool: "get_spending_by_category", status: "running" },
-        { id: "2", tool: "get_account_balances", status: "running" },
-      ];
-      setRunningActions(actions);
+    // Show loading state
+    const loadingMessageId = (Date.now() + 1).toString();
+    setRunningActions([
+      { id: "1", tool: "thinking", status: "running" },
+    ]);
 
-      // Simulate tools running
-      setTimeout(() => {
-        setRunningActions([
-          { id: "1", tool: "get_spending_by_category", status: "completed", result: { food: 650 } },
-          { id: "2", tool: "get_account_balances", status: "completed", result: { total: 16220 } },
-        ]);
+    try {
+      // Prepare messages for API (exclude the initial welcome message for cleaner context)
+      const messagesForAPI = [
+        ...messages.filter(m => m.role !== "assistant" || m.id !== "1"),
+        { role: "user", content: currentInput },
+      ].map(m => ({
+        role: m.role,
+        content: m.content,
+      }));
 
-        setTimeout(() => {
-          const response = generateResponse(input, {
-            food: 650,
-            total: 16220,
-          });
+      // Call OpenAI API
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: messagesForAPI,
+          mode: mode,
+        }),
+      });
 
-          const assistantMessage: ChatMessage = {
-            id: (Date.now() + 1).toString(),
-            role: "assistant",
-            content: response,
-            timestamp: new Date(),
-            actionBubbles: [
-              { id: "1", tool: "get_spending_by_category", status: "completed", result: { food: 650 } },
-              { id: "2", tool: "get_account_balances", status: "completed", result: { total: 16220 } },
-            ],
-          };
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.details || error.error || 'Failed to get response');
+      }
 
-          setMessages((prev) => [...prev, assistantMessage]);
-          setRunningActions([]);
-        }, 1000);
-      }, 1500);
-    } else {
-      // Simple chat response
-      setTimeout(() => {
-        const assistantMessage: ChatMessage = {
-          id: (Date.now() + 1).toString(),
-          role: "assistant",
-          content: "I'd be happy to help! For detailed financial analysis, try asking about your spending or balances.",
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, assistantMessage]);
-      }, 500);
+      const data = await response.json();
+
+      const assistantMessage: ChatMessage = {
+        id: loadingMessageId,
+        role: "assistant",
+        content: data.content,
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+      setRunningActions([]);
+    } catch (error: any) {
+      console.error('Error calling OpenAI:', error);
+      const errorMessage: ChatMessage = {
+        id: loadingMessageId,
+        role: "assistant",
+        content: `Sorry, I encountered an error: ${error.message || 'Unknown error'}. Please try again.`,
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      setRunningActions([]);
     }
-  };
-
-  const generateResponse = (question: string, data: any): string => {
-    if (question.toLowerCase().includes("food") || question.toLowerCase().includes("spend")) {
-      return `You've spent $${data.food.toLocaleString()} on food this month. That's within your budget of $800! 🎉`;
-    }
-    if (question.toLowerCase().includes("balance")) {
-      return `Your total balance across all accounts is $${data.total.toLocaleString()}.`;
-    }
-    return "Here's what I found based on your data...";
   };
 
   return (
@@ -113,31 +111,31 @@ export default function ChatPage() {
       {/* Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
-          <h1 className="text-3xl font-semibold text-gray-900">Luni AI</h1>
-          <div className="flex items-center gap-2 bg-gray-100 rounded-full p-1">
+          <h1 className="text-3xl font-semibold text-apple-gray-darker">AI</h1>
+          <div className="flex items-center gap-2 bg-apple-gray rounded-full p-1">
             <button
               onClick={() => setMode("chat")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 mode === "chat"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-600"
+                  ? "bg-white text-apple-blue shadow-apple"
+                  : "text-apple-gray-dark hover:text-apple-blue"
               }`}
             >
               Chat
             </button>
             <button
               onClick={() => setMode("agent")}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 mode === "agent"
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-600"
+                  ? "bg-white text-apple-blue shadow-apple"
+                  : "text-apple-gray-dark hover:text-apple-blue"
               }`}
             >
               Agent
             </button>
           </div>
         </div>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-apple-gray-dark">
           {mode === "chat"
             ? "Basic help and questions"
             : "I can read your data and analyze transactions"}
@@ -154,7 +152,7 @@ export default function ChatPage() {
                 setInput(question);
                 setTimeout(() => handleSend(), 100);
               }}
-              className="px-4 py-2 rounded-full bg-gray-100 hover:bg-gray-200 text-sm text-gray-700 transition-colors"
+              className="px-4 py-2 rounded-full bg-white border border-apple-gray/50 hover:border-apple-blue/50 hover:bg-apple-blue-subtle/50 text-sm text-apple-gray-darker transition-all duration-200 shadow-apple"
             >
               {question}
             </button>
@@ -172,8 +170,8 @@ export default function ChatPage() {
               <div
                 className={`max-w-[80%] rounded-2xl px-4 py-3 ${
                   message.role === "user"
-                    ? "bg-black text-white"
-                    : "bg-gray-100 text-gray-900"
+                    ? "bg-apple-blue text-white"
+                    : "bg-apple-gray-light text-apple-gray-darker"
                 }`}
               >
                 <p className="text-sm leading-relaxed">{message.content}</p>
@@ -185,7 +183,7 @@ export default function ChatPage() {
                 {message.actionBubbles.map((bubble) => (
                   <div
                     key={bubble.id}
-                    className="px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs text-blue-700"
+                    className="px-3 py-1.5 rounded-full bg-apple-blue-subtle border border-apple-blue/30 text-xs text-apple-blue"
                   >
                     {bubble.tool} ✓
                   </div>
@@ -200,9 +198,9 @@ export default function ChatPage() {
             {runningActions.map((action) => (
               <div
                 key={action.id}
-                className="px-3 py-1.5 rounded-full bg-gray-100 border border-gray-200 text-xs text-gray-700 flex items-center gap-2"
+                className="px-3 py-1.5 rounded-full bg-apple-gray-light border border-apple-gray text-xs text-apple-gray-darker flex items-center gap-2"
               >
-                <span className="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                <span className="w-2 h-2 bg-apple-blue rounded-full animate-pulse"></span>
                 {action.tool}...
               </div>
             ))}
@@ -211,7 +209,7 @@ export default function ChatPage() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-gray-200 pt-4">
+      <div className="border-t border-apple-gray pt-4">
         <div className="flex gap-3">
           <input
             type="text"
@@ -219,11 +217,11 @@ export default function ChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && handleSend()}
             placeholder="Ask me anything about your finances..."
-            className="flex-1 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            className="flex-1 px-4 py-3 rounded-2xl border border-apple-gray focus:outline-none focus:ring-2 focus:ring-apple-blue focus:border-transparent bg-white shadow-apple"
           />
           <button
             onClick={handleSend}
-            className="px-6 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition-colors font-medium"
+            className="px-6 py-3 rounded-2xl bg-apple-blue text-white hover:bg-apple-blue-dark transition-all duration-200 font-medium shadow-apple"
           >
             Send
           </button>

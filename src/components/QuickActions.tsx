@@ -25,7 +25,7 @@ export default function QuickActions({
     { label: "Categorize 5", onClick: onCategorize },
     { label: "Add transfer to BMW", onClick: onAddTransfer },
     { label: "Invite friend", onClick: onInviteFriend, href: "/social" },
-    { label: "Ask Luni AI", onClick: onAskAI, href: "/chat" },
+    { label: "Ask AI", onClick: onAskAI, href: "/chat" },
   ];
 
   const handleAction = (action: typeof actions[0]) => {
@@ -41,7 +41,7 @@ export default function QuickActions({
           <button
             key={index}
             onClick={() => handleAction(action)}
-            className="w-full px-4 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 transition-colors text-sm font-medium text-gray-900 text-center"
+            className="w-full px-4 py-3 rounded-2xl bg-white border border-apple-gray/50 hover:border-apple-blue/50 hover:bg-apple-blue-subtle/50 transition-all duration-200 text-sm font-medium text-apple-gray-darker text-center shadow-apple"
           >
             {action.label}
           </button>

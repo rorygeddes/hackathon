@@ -51,8 +51,8 @@ export default function Dashboard() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-8">
       <header className="mb-8">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">Dashboard</h1>
-        <p className="text-gray-600">Your daily financial pulse</p>
+        <h1 className="text-3xl font-semibold text-apple-gray-darker mb-2">Dashboard</h1>
+        <p className="text-apple-gray-dark">Your daily financial pulse</p>
       </header>
 
       <div className="space-y-6">
@@ -67,13 +67,29 @@ export default function Dashboard() {
 
         {/* Quick Actions */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+          <h3 className="text-lg font-semibold text-apple-gray-darker mb-4">Quick Actions</h3>
           <QuickActions
             onCategorize={() => alert("Categorize 5 transactions")}
             onAddTransfer={() => alert("Add transfer to BMW goal")}
             onInviteFriend={() => {}}
             onAskAI={() => {}}
           />
+        </div>
+
+        {/* Bank Integration */}
+        <div className="mt-8">
+          <div className="bg-white rounded-3xl shadow-apple-lg border border-apple-gray/50 p-6">
+            <h3 className="text-lg font-semibold text-apple-gray-darker mb-2">Connect Your Bank</h3>
+            <p className="text-apple-gray-dark mb-4">
+              Securely link your accounts with Plaid to automatically track your transactions
+            </p>
+            <button
+              onClick={() => alert("Plaid integration coming soon!")}
+              className="w-full bg-apple-blue text-white py-3 px-6 rounded-2xl font-semibold hover:bg-apple-blue-dark transition-colors duration-200 shadow-apple-md hover:shadow-apple-lg"
+            >
+              Connect with Plaid
+            </button>
+          </div>
         </div>
       </div>
     </div>
