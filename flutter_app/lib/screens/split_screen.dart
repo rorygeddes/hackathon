@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../constants/colors.dart';
 
 class SplitScreen extends StatefulWidget {
   const SplitScreen({super.key});
@@ -50,7 +51,7 @@ class _SplitScreenState extends State<SplitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: AppleColors.grayLight,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -66,13 +67,13 @@ class _SplitScreenState extends State<SplitScreen> {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: AppleColors.blue,
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -129,7 +130,7 @@ class _SplitScreenState extends State<SplitScreen> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,7 +139,7 @@ class _SplitScreenState extends State<SplitScreen> {
             label,
             style: const TextStyle(
               fontSize: 14,
-              color: Color(0xFF6B7280),
+              color: AppleColors.grayDark,
             ),
           ),
           const SizedBox(height: 8),
@@ -157,7 +158,7 @@ class _SplitScreenState extends State<SplitScreen> {
                 : (label == "You Owe" ? "Total amount owed" : "Total amount to receive"),
             style: const TextStyle(
               fontSize: 12,
-              color: Color(0xFF9CA3AF),
+              color: AppleColors.grayDark,
             ),
           ),
         ],
@@ -178,7 +179,7 @@ class _SplitScreenState extends State<SplitScreen> {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: isActive ? Colors.black : Colors.transparent,
+              color: isActive ? AppleColors.blue : Colors.transparent,
               width: 2,
             ),
           ),
@@ -188,7 +189,7 @@ class _SplitScreenState extends State<SplitScreen> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: isActive ? Colors.black : const Color(0xFF6B7280),
+            color: isActive ? AppleColors.blue : AppleColors.grayDark,
           ),
         ),
       ),
@@ -202,7 +203,7 @@ class _SplitScreenState extends State<SplitScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
         ),
         child: const Center(
           child: Column(
@@ -225,7 +226,7 @@ class _SplitScreenState extends State<SplitScreen> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: const Color(0xFFE5E7EB)),
+            border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,14 +239,14 @@ class _SplitScreenState extends State<SplitScreen> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                   Text(
                     "${group.members.length} members",
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF6B7280),
+                      color: AppleColors.grayDark,
                     ),
                   ),
                 ],
@@ -261,7 +262,7 @@ class _SplitScreenState extends State<SplitScreen> {
                         member.name,
                         style: const TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF374151),
+                          color: AppleColors.grayDarker,
                         ),
                       ),
                       Text(
@@ -283,7 +284,7 @@ class _SplitScreenState extends State<SplitScreen> {
                 "View details →",
                 style: TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF2563EB),
+                  color: AppleColors.blue,
                 ),
               ),
             ],
@@ -300,7 +301,7 @@ class _SplitScreenState extends State<SplitScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
         ),
         child: const Center(
           child: Column(
@@ -323,7 +324,7 @@ class _SplitScreenState extends State<SplitScreen> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: const Color(0xFFE5E7EB)),
+            border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -337,7 +338,7 @@ class _SplitScreenState extends State<SplitScreen> {
                         width: 48,
                         height: 48,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF3F4F6),
+                          color: AppleColors.blueSubtle,
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: Center(
@@ -346,7 +347,7 @@ class _SplitScreenState extends State<SplitScreen> {
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF111827),
+                              color: AppleColors.grayDarker,
                             ),
                           ),
                         ),
@@ -360,7 +361,7 @@ class _SplitScreenState extends State<SplitScreen> {
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF111827),
+                              color: AppleColors.grayDarker,
                             ),
                           ),
                           if (person.email != null)
@@ -368,7 +369,7 @@ class _SplitScreenState extends State<SplitScreen> {
                               person.email!,
                               style: const TextStyle(
                                 fontSize: 14,
-                                color: Color(0xFF6B7280),
+                                color: AppleColors.grayDark,
                               ),
                             ),
                         ],
@@ -392,7 +393,7 @@ class _SplitScreenState extends State<SplitScreen> {
                         person.netAmount >= 0 ? "owes you" : "you owe",
                         style: const TextStyle(
                           fontSize: 12,
-                          color: Color(0xFF9CA3AF),
+                          color: AppleColors.grayDark,
                         ),
                       ),
                     ],
@@ -404,7 +405,7 @@ class _SplitScreenState extends State<SplitScreen> {
                 "View history →",
                 style: TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF2563EB),
+                  color: AppleColors.blue,
                 ),
               ),
             ],

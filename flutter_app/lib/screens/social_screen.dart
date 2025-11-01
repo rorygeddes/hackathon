@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../constants/colors.dart';
 
 class SocialScreen extends StatefulWidget {
   const SocialScreen({super.key});
@@ -41,7 +42,7 @@ class _SocialScreenState extends State<SocialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: AppleColors.grayLight,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -57,13 +58,13 @@ class _SocialScreenState extends State<SocialScreen> {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: AppleColors.blue,
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -118,7 +119,7 @@ class _SocialScreenState extends State<SocialScreen> {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: isActive ? Colors.black : Colors.transparent,
+              color: isActive ? AppleColors.blue : Colors.transparent,
               width: 2,
             ),
           ),
@@ -128,7 +129,7 @@ class _SocialScreenState extends State<SocialScreen> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: isActive ? Colors.black : const Color(0xFF6B7280),
+            color: isActive ? AppleColors.blue : AppleColors.grayDark,
           ),
         ),
       ),
@@ -142,14 +143,14 @@ class _SocialScreenState extends State<SocialScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
         ),
         child: const Center(
           child: Column(
             children: [
               Text(
                 "No friends yet",
-                style: TextStyle(color: Color(0xFF9CA3AF)),
+                style: TextStyle(color: AppleColors.grayDark),
               ),
             ],
           ),
@@ -166,7 +167,7 @@ class _SocialScreenState extends State<SocialScreen> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Color(0xFF6B7280),
+              color: AppleColors.grayDark,
             ),
           ),
           const SizedBox(height: 12),
@@ -179,7 +180,7 @@ class _SocialScreenState extends State<SocialScreen> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Color(0xFF6B7280),
+              color: AppleColors.grayDark,
             ),
           ),
           const SizedBox(height: 12),
@@ -207,7 +208,7 @@ class _SocialScreenState extends State<SocialScreen> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF3F4F6),
+                  color: AppleColors.blueSubtle,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 child: Center(
@@ -216,7 +217,7 @@ class _SocialScreenState extends State<SocialScreen> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                 ),
@@ -230,14 +231,14 @@ class _SocialScreenState extends State<SocialScreen> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                   Text(
                     friend.email,
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF6B7280),
+                      color: AppleColors.grayDark,
                     ),
                   ),
                 ],
@@ -276,7 +277,7 @@ class _SocialScreenState extends State<SocialScreen> {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFDBEAFE),
+                    backgroundColor: AppleColors.blueSubtle,
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
@@ -286,7 +287,7 @@ class _SocialScreenState extends State<SocialScreen> {
                     "View Split",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF1E40AF),
+                      color: AppleColors.blue,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -305,14 +306,14 @@ class _SocialScreenState extends State<SocialScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
         ),
         child: const Center(
           child: Column(
             children: [
               Text(
                 "No groups yet",
-                style: TextStyle(color: Color(0xFF9CA3AF)),
+                style: TextStyle(color: AppleColors.grayDark),
               ),
             ],
           ),
@@ -328,7 +329,7 @@ class _SocialScreenState extends State<SocialScreen> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: const Color(0xFFE5E7EB)),
+            border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -341,14 +342,14 @@ class _SocialScreenState extends State<SocialScreen> {
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                   Text(
                     "${group["members"]} members",
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF6B7280),
+                      color: AppleColors.grayDark,
                     ),
                   ),
                 ],
@@ -385,14 +386,14 @@ class _SocialScreenState extends State<SocialScreen> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
         ),
         child: const Center(
           child: Column(
             children: [
               Text(
                 "No pending requests",
-                style: TextStyle(color: Color(0xFF9CA3AF)),
+                style: TextStyle(color: AppleColors.grayDark),
               ),
             ],
           ),
@@ -408,7 +409,7 @@ class _SocialScreenState extends State<SocialScreen> {
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: const Color(0xFFE5E7EB)),
+            border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -419,7 +420,7 @@ class _SocialScreenState extends State<SocialScreen> {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF3F4F6),
+                      color: AppleColors.blueSubtle,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     child: Center(
@@ -428,7 +429,7 @@ class _SocialScreenState extends State<SocialScreen> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF111827),
+                          color: AppleColors.grayDarker,
                         ),
                       ),
                     ),
@@ -442,14 +443,14 @@ class _SocialScreenState extends State<SocialScreen> {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF111827),
+                          color: AppleColors.grayDarker,
                         ),
                       ),
                       Text(
                         request.from.email,
                         style: const TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF6B7280),
+                          color: AppleColors.grayDark,
                         ),
                       ),
                       Text(
@@ -468,7 +469,7 @@ class _SocialScreenState extends State<SocialScreen> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: AppleColors.blue,
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -488,7 +489,7 @@ class _SocialScreenState extends State<SocialScreen> {
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      side: const BorderSide(color: Color(0xFFE5E7EB)),
+                      side: const BorderSide(color: AppleColors.gray),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -497,7 +498,7 @@ class _SocialScreenState extends State<SocialScreen> {
                       "Decline",
                       style: TextStyle(
                         fontSize: 14,
-                        color: Color(0xFF374151),
+                        color: AppleColors.grayDarker,
                       ),
                     ),
                   ),

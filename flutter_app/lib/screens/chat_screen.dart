@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../constants/colors.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -148,7 +149,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: AppleColors.grayLight,
       body: SafeArea(
         child: Column(
           children: [
@@ -166,13 +167,13 @@ class _ChatScreenState extends State<ChatScreen> {
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF111827),
+                          color: AppleColors.grayDarker,
                         ),
                       ),
                       Container(
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFF3F4F6),
+                          color: AppleColors.grayLight,
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: Row(
@@ -192,7 +193,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         : "I can read your data and analyze transactions",
                     style: const TextStyle(
                       fontSize: 14,
-                      color: Color(0xFF6B7280),
+                      color: AppleColors.grayDark,
                     ),
                   ),
                 ],
@@ -214,7 +215,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
@@ -252,15 +253,15 @@ class _ChatScreenState extends State<ChatScreen> {
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           color: isUser
-                              ? Colors.black
-                              : const Color(0xFFF3F4F6),
+                              ? AppleColors.blue
+                              : AppleColors.grayLight,
                           borderRadius: BorderRadius.circular(16),
                         ),
                         child: Text(
                           message.content,
                           style: TextStyle(
                             fontSize: 14,
-                            color: isUser ? Colors.white : const Color(0xFF111827),
+                            color: isUser ? Colors.white : AppleColors.grayDarker,
                           ),
                         ),
                       ),
@@ -272,15 +273,15 @@ class _ChatScreenState extends State<ChatScreen> {
                             return Container(
                               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                               decoration: BoxDecoration(
-                                color: const Color(0xFFDBEAFE),
-                                border: Border.all(color: const Color(0xFF93C5FD)),
+                                color: AppleColors.blueSubtle,
+                                border: Border.all(color: AppleColors.blue.withOpacity(0.3)),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Text(
                                 "${bubble.tool} ✓",
                                 style: const TextStyle(
                                   fontSize: 12,
-                                  color: Color(0xFF1E40AF),
+                                  color: AppleColors.blue,
                                 ),
                               ),
                             );
@@ -303,8 +304,8 @@ class _ChatScreenState extends State<ChatScreen> {
                     return Container(
                       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
-                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        color: AppleColors.grayLight,
+                        border: Border.all(color: AppleColors.gray),
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
@@ -314,7 +315,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             width: 8,
                             height: 8,
                             decoration: const BoxDecoration(
-                              color: Colors.blue,
+                              color: AppleColors.blue,
                               shape: BoxShape.circle,
                             ),
                           ),
@@ -323,7 +324,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             "${action.tool}...",
                             style: const TextStyle(
                               fontSize: 12,
-                              color: Color(0xFF374151),
+                              color: AppleColors.grayDarker,
                             ),
                           ),
                         ],
@@ -338,7 +339,7 @@ class _ChatScreenState extends State<ChatScreen> {
               padding: const EdgeInsets.all(24),
               decoration: const BoxDecoration(
                 color: Colors.white,
-                border: Border(top: BorderSide(color: Color(0xFFE5E7EB))),
+                border: Border(top: BorderSide(color: AppleColors.gray)),
               ),
               child: Row(
                 children: [
@@ -347,18 +348,18 @@ class _ChatScreenState extends State<ChatScreen> {
                       controller: _inputController,
                       decoration: InputDecoration(
                         hintText: "Ask me anything about your finances...",
-                        hintStyle: const TextStyle(color: Color(0xFF9CA3AF)),
+                        hintStyle: const TextStyle(color: AppleColors.grayDark),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Color(0xFFD1D5DB)),
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: AppleColors.gray),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Color(0xFFD1D5DB)),
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: AppleColors.gray),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(color: Colors.black, width: 2),
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(color: AppleColors.blue, width: 2),
                         ),
                         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
@@ -369,7 +370,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ElevatedButton(
                     onPressed: _handleSend,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: AppleColors.blue,
                       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -420,7 +421,7 @@ class _ChatScreenState extends State<ChatScreen> {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: isActive ? const Color(0xFF111827) : const Color(0xFF6B7280),
+            color: isActive ? AppleColors.blue : AppleColors.grayDark,
           ),
         ),
       ),

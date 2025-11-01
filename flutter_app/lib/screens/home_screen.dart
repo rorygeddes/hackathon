@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../constants/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: AppleColors.grayLight,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               const SizedBox(height: 8),
@@ -55,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 "Your daily financial pulse",
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
               const SizedBox(height: 32),
@@ -78,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               const SizedBox(height: 16),
@@ -95,8 +96,20 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,14 +122,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
               const Text(
                 "Tap to view accounts",
                 style: TextStyle(
                   fontSize: 12,
-                  color: Color(0xFF9CA3AF),
+                  color: AppleColors.grayDark,
                 ),
               ),
             ],
@@ -127,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: const TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF111827),
+              color: AppleColors.grayDarker,
             ),
           ),
           const SizedBox(height: 16),
@@ -142,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     account.name,
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF6B7280),
+                      color: AppleColors.grayDark,
                     ),
                   ),
                   Text(
@@ -150,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF111827),
+                      color: AppleColors.grayDarker,
                     ),
                   ),
                 ],
@@ -170,8 +183,20 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,14 +209,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               Text(
                 "Total target \$${totalTarget.toStringAsFixed(0)}",
                 style: const TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
             ],
@@ -203,7 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.all(32),
                 child: Text(
                   "No goals yet",
-                  style: TextStyle(color: Color(0xFF9CA3AF)),
+                  style: TextStyle(color: AppleColors.grayDark),
                 ),
               ),
             )
@@ -218,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                        color: const Color(0xFFF3F4F6),
+                        color: AppleColors.blueSubtle,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: const Center(child: Text("🎯")),
@@ -236,14 +261,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFF111827),
+                                  color: AppleColors.grayDarker,
                                 ),
                               ),
                               Text(
                                 "${(progress * 100).toStringAsFixed(0)}%",
                                 style: const TextStyle(
                                   fontSize: 12,
-                                  color: Color(0xFF6B7280),
+                                  color: AppleColors.grayDark,
                                 ),
                               ),
                             ],
@@ -253,17 +278,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             "\$${goal.currentAmount.toStringAsFixed(0)} / \$${goal.targetAmount.toStringAsFixed(0)}",
                             style: const TextStyle(
                               fontSize: 12,
-                              color: Color(0xFF6B7280),
+                              color: AppleColors.grayDark,
                             ),
                           ),
                           const SizedBox(height: 8),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
+                            borderRadius: BorderRadius.circular(8),
                             child: LinearProgressIndicator(
                               value: progress,
-                              backgroundColor: const Color(0xFFE5E7EB),
-                              valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF2563EB)),
-                              minHeight: 6,
+                              backgroundColor: AppleColors.gray,
+                              valueColor: const AlwaysStoppedAnimation<Color>(AppleColors.blue),
+                              minHeight: 8,
                             ),
                           ),
                         ],
@@ -283,8 +308,20 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,7 +331,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF111827),
+              color: AppleColors.grayDarker,
             ),
           ),
           const SizedBox(height: 16),
@@ -314,7 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF111827),
+                          color: AppleColors.grayDarker,
                         ),
                       ),
                       Text(
@@ -322,21 +359,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: isOver ? const Color(0xFFDC2626) : const Color(0xFF6B7280),
+                          color: isOver ? const Color(0xFFDC2626) : AppleColors.grayDark,
                         ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 8),
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(8),
                     child: LinearProgressIndicator(
                       value: percentage,
-                      backgroundColor: const Color(0xFFE5E7EB),
+                      backgroundColor: AppleColors.gray,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        isOver ? const Color(0xFFEF4444) : const Color(0xFF2563EB),
+                        isOver ? const Color(0xFFEF4444) : AppleColors.blue,
                       ),
-                      minHeight: 6,
+                      minHeight: 8,
                     ),
                   ),
                 ],
@@ -371,8 +408,16 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
         decoration: BoxDecoration(
-          color: const Color(0xFFF3F4F6),
-          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.5)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
         child: Center(
           child: Text(
@@ -380,7 +425,7 @@ class _HomeScreenState extends State<HomeScreen> {
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Color(0xFF111827),
+              color: AppleColors.grayDarker,
             ),
             textAlign: TextAlign.center,
           ),

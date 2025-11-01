@@ -4,6 +4,7 @@ import 'screens/budget_screen.dart';
 import 'screens/chat_screen.dart';
 import 'screens/split_screen.dart';
 import 'screens/social_screen.dart';
+import 'constants/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,8 +18,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Finance App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppleColors.blue,
+          primary: AppleColors.blue,
+          secondary: AppleColors.blueLight,
+        ),
         useMaterial3: true,
+        scaffoldBackgroundColor: AppleColors.grayLight,
       ),
       home: const MainScreen(),
     );
@@ -50,19 +56,24 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: Container(
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: const Color(0xFFE5E7EB)),
+          color: Colors.white.withOpacity(0.8),
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(color: AppleColors.gray.withOpacity(0.5)),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
-              blurRadius: 10,
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 16,
               offset: const Offset(0, 4),
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.04),
+              blurRadius: 2,
+              offset: const Offset(0, 1),
             ),
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(24),
           child: BottomNavigationBar(
             currentIndex: _currentIndex,
             onTap: (index) {
@@ -71,11 +82,12 @@ class _MainScreenState extends State<MainScreen> {
               });
             },
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: const Color(0xFF6B7280),
+            backgroundColor: Colors.transparent,
+            selectedItemColor: AppleColors.blue,
+            unselectedItemColor: AppleColors.grayDark,
             selectedFontSize: 12,
             unselectedFontSize: 12,
+            elevation: 0,
             items: const [
               BottomNavigationBarItem(
                 icon: Text("🏠", style: TextStyle(fontSize: 24)),

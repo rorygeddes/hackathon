@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../constants/colors.dart';
 
 class BudgetScreen extends StatefulWidget {
   const BudgetScreen({super.key});
@@ -69,7 +70,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: AppleColors.grayLight,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
@@ -81,7 +82,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               const SizedBox(height: 8),
@@ -89,7 +90,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 "Your automated budget is live (based on last 3 months). Edit anytime.",
                 style: TextStyle(
                   fontSize: 16,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
               const SizedBox(height: 32),
@@ -104,7 +105,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               const SizedBox(height: 16),
@@ -114,7 +115,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 "${spendingPercentage.toStringAsFixed(0)}% of cash flow",
                 budget.monthlySpending.allowance,
                 budget.monthlySpending.actual,
-                Colors.blue,
+                AppleColors.blue,
               ),
               const SizedBox(height: 16),
 
@@ -126,7 +127,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 "",
                 budget.goals.allowance,
                 budget.goals.actual,
-                Colors.purple,
+                AppleColors.blue,
               ),
               const SizedBox(height: 24),
 
@@ -148,8 +149,20 @@ class _BudgetScreenState extends State<BudgetScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +186,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                       "Income",
                       style: TextStyle(
                         fontSize: 14,
-                        color: Color(0xFF6B7280),
+                        color: AppleColors.grayDark,
                       ),
                     ),
                     Text(
@@ -195,7 +208,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                       "Spending",
                       style: TextStyle(
                         fontSize: 14,
-                        color: Color(0xFF6B7280),
+                        color: AppleColors.grayDark,
                       ),
                     ),
                     Text(
@@ -203,7 +216,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF111827),
+                        color: AppleColors.grayDarker,
                       ),
                     ),
                   ],
@@ -240,8 +253,20 @@ class _BudgetScreenState extends State<BudgetScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -254,7 +279,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               if (subtitle.isNotEmpty)
@@ -262,7 +287,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   subtitle,
                   style: const TextStyle(
                     fontSize: 14,
-                    color: Color(0xFF6B7280),
+                    color: AppleColors.grayDark,
                   ),
                 ),
             ],
@@ -275,7 +300,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 "Allowance",
                 style: TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
               Text(
@@ -283,7 +308,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
             ],
@@ -297,7 +322,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                   "Actual",
                   style: TextStyle(
                     fontSize: 14,
-                    color: Color(0xFF6B7280),
+                    color: AppleColors.grayDark,
                   ),
                 ),
                 Text(
@@ -316,7 +341,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
             borderRadius: BorderRadius.circular(12),
             child: LinearProgressIndicator(
               value: percentage,
-              backgroundColor: const Color(0xFFE5E7EB),
+              backgroundColor: AppleColors.gray,
               valueColor: AlwaysStoppedAnimation<Color>(
                 isOver ? Colors.red : color,
               ),
@@ -335,8 +360,20 @@ class _BudgetScreenState extends State<BudgetScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -349,14 +386,14 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
               Text(
                 "\$${budget.emergency.actual.toStringAsFixed(0)} / \$${budget.emergency.target.toStringAsFixed(0)}",
                 style: const TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
             ],
@@ -369,7 +406,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 "Monthly Allowance",
                 style: TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF6B7280),
+                  color: AppleColors.grayDark,
                 ),
               ),
               Text(
@@ -377,7 +414,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF111827),
+                  color: AppleColors.grayDarker,
                 ),
               ),
             ],
@@ -387,7 +424,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
             borderRadius: BorderRadius.circular(12),
             child: LinearProgressIndicator(
               value: percentage,
-              backgroundColor: const Color(0xFFE5E7EB),
+              backgroundColor: AppleColors.gray,
               valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF10B981)),
               minHeight: 12,
             ),
@@ -402,8 +439,20 @@ class _BudgetScreenState extends State<BudgetScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -433,7 +482,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF111827),
+                          color: AppleColors.grayDarker,
                         ),
                       ),
                       Text(
@@ -451,9 +500,9 @@ class _BudgetScreenState extends State<BudgetScreen> {
                     borderRadius: BorderRadius.circular(6),
                     child: LinearProgressIndicator(
                       value: percentage,
-                      backgroundColor: const Color(0xFFE5E7EB),
+                      backgroundColor: AppleColors.gray,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        isOver ? Colors.red : Colors.blue,
+                        isOver ? Colors.red : AppleColors.blue,
                       ),
                       minHeight: 6,
                     ),
@@ -472,8 +521,20 @@ class _BudgetScreenState extends State<BudgetScreen> {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE5E7EB)),
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 1,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -492,7 +553,7 @@ class _BudgetScreenState extends State<BudgetScreen> {
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: Color(0xFF374151),
+              color: AppleColors.grayDarker,
             ),
           ),
           Slider(
@@ -512,11 +573,11 @@ class _BudgetScreenState extends State<BudgetScreen> {
             children: const [
               Text(
                 "60%",
-                style: TextStyle(fontSize: 12, color: Color(0xFF9CA3AF)),
+                style: TextStyle(fontSize: 12, color: AppleColors.grayDark),
               ),
               Text(
                 "70%",
-                style: TextStyle(fontSize: 12, color: Color(0xFF9CA3AF)),
+                style: TextStyle(fontSize: 12, color: AppleColors.grayDark),
               ),
             ],
           ),
@@ -526,10 +587,10 @@ class _BudgetScreenState extends State<BudgetScreen> {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
+                backgroundColor: AppleColors.blue,
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
               child: const Text(
