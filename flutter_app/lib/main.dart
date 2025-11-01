@@ -3,7 +3,6 @@ import 'screens/home_screen.dart';
 import 'screens/budget_screen.dart';
 import 'screens/chat_screen.dart';
 import 'screens/split_screen.dart';
-import 'screens/social_screen.dart';
 import 'constants/colors.dart';
 
 void main() {
@@ -46,7 +45,6 @@ class _MainScreenState extends State<MainScreen> {
     const BudgetScreen(),
     const ChatScreen(),
     const SplitScreen(),
-    const SocialScreen(),
   ];
 
   @override
@@ -104,10 +102,6 @@ class _MainScreenState extends State<MainScreen> {
               BottomNavigationBarItem(
                 icon: Text("🤝", style: TextStyle(fontSize: 24)),
                 label: "Split",
-              ),
-              BottomNavigationBarItem(
-                icon: Text("👥", style: TextStyle(fontSize: 24)),
-                label: "Social",
               ),
             ],
           ),

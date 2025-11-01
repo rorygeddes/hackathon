@@ -24,7 +24,6 @@ export default function QuickActions({
   const actions = [
     { label: "Categorize 5", onClick: onCategorize },
     { label: "Add transfer to BMW", onClick: onAddTransfer },
-    { label: "Invite friend", onClick: onInviteFriend, href: "/social" },
     { label: "Ask AI", onClick: onAskAI, href: "/chat" },
   ];
 

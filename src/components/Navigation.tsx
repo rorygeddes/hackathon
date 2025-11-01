@@ -11,7 +11,6 @@ export default function Navigation() {
     { href: "/budget", label: "Budget", icon: "💰" },
     { href: "/chat", label: "AI", icon: "💬" },
     { href: "/split", label: "Split", icon: "🤝" },
-    { href: "/social", label: "Social", icon: "👥" },
   ];
 
   return (

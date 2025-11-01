@@ -105,12 +105,26 @@ class _SplitScreenState extends State<SplitScreen> {
               const SizedBox(height: 32),
 
               // Tabs
-              Row(
-                children: [
-                  _buildTabButton("Groups", "groups"),
-                  const SizedBox(width: 16),
-                  _buildTabButton("People", "people"),
-                ],
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 4,
+                      offset: const Offset(0, 1),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Expanded(child: _buildTabButton("Groups", "groups")),
+                    Expanded(child: _buildTabButton("People", "people")),
+                  ],
+                ),
               ),
               const SizedBox(height: 24),
 
@@ -126,11 +140,18 @@ class _SplitScreenState extends State<SplitScreen> {
 
   Widget _buildNumberCard(String label, double amount, bool isPositive) {
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,26 +159,27 @@ class _SplitScreenState extends State<SplitScreen> {
           Text(
             label,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 13,
               color: AppleColors.grayDark,
+              fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           Text(
             "\$${amount.abs().toStringAsFixed(0)}",
             style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
+              fontSize: 28,
+              fontWeight: FontWeight.w700,
               color: isPositive ? const Color(0xFF10B981) : const Color(0xFFDC2626),
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 6),
           Text(
             label == "Net"
                 ? (isPositive ? "You'll receive" : "You owe")
                 : (label == "You Owe" ? "Total amount owed" : "Total amount to receive"),
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 11,
               color: AppleColors.grayDark,
             ),
           ),
@@ -175,21 +197,19 @@ class _SplitScreenState extends State<SplitScreen> {
         });
       },
       child: Container(
-        padding: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: isActive ? AppleColors.blue : Colors.transparent,
-              width: 2,
-            ),
-          ),
+          color: isActive ? AppleColors.blueSubtle : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
         ),
-        child: Text(
-          label,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: isActive ? AppleColors.blue : AppleColors.grayDark,
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: isActive ? FontWeight.w600 : FontWeight.w500,
+              color: isActive ? AppleColors.blue : AppleColors.grayDark,
+            ),
           ),
         ),
       ),
@@ -222,11 +242,18 @@ class _SplitScreenState extends State<SplitScreen> {
       children: groups.map((group) {
         return Container(
           margin: const EdgeInsets.only(bottom: 16),
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(24),
             border: Border.all(color: AppleColors.gray.withOpacity(0.3)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.08),
+                blurRadius: 8,
+                offset: const Offset(0, 2),
+              ),
+            ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -234,58 +261,113 @@ class _SplitScreenState extends State<SplitScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    group.name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: AppleColors.grayDarker,
+                  Expanded(
+                    child: Text(
+                      group.name,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        color: AppleColors.grayDarker,
+                      ),
                     ),
                   ),
-                  Text(
-                    "${group.members.length} members",
-                    style: const TextStyle(
-                      fontSize: 14,
-                      color: AppleColors.grayDark,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: AppleColors.blueSubtle,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      "${group.members.length} ${group.members.length == 1 ? 'member' : 'members'}",
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: AppleColors.blue,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
-              ...group.members.map((member) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        member.name,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: AppleColors.grayDarker,
-                        ),
-                      ),
-                      Text(
-                        "${member.netAmount >= 0 ? "+" : ""}\$${member.netAmount.abs().toStringAsFixed(0)}",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: member.netAmount >= 0
-                              ? const Color(0xFF10B981)
-                              : const Color(0xFFDC2626),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              }),
-              const Divider(height: 32),
-              const Text(
-                "View details →",
-                style: TextStyle(
-                  fontSize: 14,
-                  color: AppleColors.blue,
+              const SizedBox(height: 20),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppleColors.grayLight,
+                  borderRadius: BorderRadius.circular(16),
                 ),
+                child: Column(
+                  children: group.members.asMap().entries.map((entry) {
+                    final member = entry.value;
+                    final isLast = entry.key == group.members.length - 1;
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: isLast ? 0 : 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                  color: member.name == "You" 
+                                      ? AppleColors.blueSubtle 
+                                      : Colors.white,
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    member.name[0].toUpperCase(),
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: member.name == "You"
+                                          ? AppleColors.blue
+                                          : AppleColors.grayDarker,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                member.name,
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppleColors.grayDarker,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            "${member.netAmount >= 0 ? "+" : ""}\$${member.netAmount.abs().toStringAsFixed(0)}",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: member.netAmount >= 0
+                                  ? const Color(0xFF10B981)
+                                  : const Color(0xFFDC2626),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "View details →",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: AppleColors.blue,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
